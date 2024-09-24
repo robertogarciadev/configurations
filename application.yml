@@ -1,0 +1,25 @@
+server:
+  port: 8088
+
+spring:
+  profiles:
+    active: native
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/robertogarciadev/configurations.git
+          clone-on-start: true
+      label: main
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"  # Habilitar todos los endpoints de administración (incluyendo /env y /refresh)
+
+logging:
+  level:
+    org.springframework.cloud: DEBUG  # Para ver más detalles en los logs sobre las conexiones
