@@ -1,16 +1,15 @@
-server:
-  port: 8761
 
 spring:
   application:
     name: msvc-eureka
 
+# eureka-server.yml en el Config Server (repositorio git u otro)
+server:
+  port: 8761  # Puerto donde se ejecuta Eureka
 
 eureka:
-  instance:
-    hostname: localhost
   client:
-    register-with-eureka: false
-    fetch-register: false
-    server-url:
-      defaultZone: http://localhost:8761/eureka
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # URL de registro de Eureka para los clientes
+  instance:
+    prefer-ip-address: true
